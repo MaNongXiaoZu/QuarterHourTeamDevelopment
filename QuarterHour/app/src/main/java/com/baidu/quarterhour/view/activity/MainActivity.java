@@ -14,7 +14,7 @@ import java.util.TimerTask;
  * 三秒跳转页面
  * */
 public class MainActivity extends BaseActivity {
-
+    //分支
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
