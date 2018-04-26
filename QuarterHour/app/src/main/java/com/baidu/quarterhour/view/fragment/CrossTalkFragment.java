@@ -30,4 +30,9 @@ public class CrossTalkFragment extends BaseFragment {
     protected void getData() {
 
     }
+
+    @Override
+    protected void getDestory() {
+
+    }
 }

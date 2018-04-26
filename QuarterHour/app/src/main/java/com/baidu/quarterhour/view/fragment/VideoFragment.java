@@ -30,4 +30,9 @@ public class VideoFragment extends BaseFragment {
     protected void getData() {
 
     }
+
+    @Override
+    protected void getDestory() {
+
+    }
 }
