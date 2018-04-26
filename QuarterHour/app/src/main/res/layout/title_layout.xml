@@ -5,7 +5,7 @@
     android:layout_height="50dp"
     android:background="#0066FF">
     <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/placeHolderImageDraweeView"
+        android:id="@+id/title_image_left"
         android:layout_margin="5dp"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -25,6 +25,7 @@
         android:layout_centerInParent="true"/>
 
     <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/title_image_right"
         android:layout_margin="5dp"
         android:layout_width="30dp"
         android:layout_height="30dp"
