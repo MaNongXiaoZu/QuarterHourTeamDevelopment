@@ -2,14 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:autobanner="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-    <!--<com.baidu.quarterhour.view.banner.AutoBanner
-        android:id="@+id/auto_banner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        autobanner:indicator_height="10dp"
-        autobanner:indicator_margin="10dp"
-        autobanner:indicator_width="10dp"
-        autobanner:ratio_wh="1.78"/>-->
+
 </LinearLayout>

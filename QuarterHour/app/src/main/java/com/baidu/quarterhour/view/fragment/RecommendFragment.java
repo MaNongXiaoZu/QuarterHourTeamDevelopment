@@ -21,8 +21,6 @@ import java.util.List;
  */
 
 public class RecommendFragment extends BaseFragment<BannerPresenter> implements IBannerView {
-    /*private AutoBanner mAutoBanner;
-    private List<String> mImgUrls;*/
 
     @Override
     protected int getLayoutId() {
@@ -37,9 +35,7 @@ public class RecommendFragment extends BaseFragment<BannerPresenter> implements 
 
     @Override
     protected void initView(View view) {
-        /*mAutoBanner = (AutoBanner) view.findViewById(R.id.auto_banner);
 
-        mImgUrls = new ArrayList<>();*/
     }
 
     @Override
@@ -60,31 +56,6 @@ public class RecommendFragment extends BaseFragment<BannerPresenter> implements 
     @Override
     public void onSuccess(List<BannerSuperClass.DataBean> data) {
         Toast.makeText(getContext(),data.size() + "---",Toast.LENGTH_LONG).show();
-
-        /*if (data != null) {
-            for (int i = 0; i < data.size(); i++) {
-                mImgUrls.add(data.get(i).getIcon());
-            }
-
-            //不设置setAuto，不会自动轮播，不设置监听，无法点击,动画转换器可以根据需要设置
-            mAutoBanner.load(mImgUrls).setOnAutoBannerListener(this).setAuto(3000).setAutoBannerAnimation(AccordionTransformer.class).display();
-        }*/
     }
 
-    /*@Override
-    public void onClickListener(int postion) {
-        Toast.makeText(getContext(), "点击了：" + postion + "位置", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        mAutoBanner.startAuto();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        mAutoBanner.stopAuto();
-    }*/
 }
