@@ -7,5 +7,8 @@ import com.baidu.quarterhour.presenter.IBannerPresenter;
  */
 
 public interface ITotalModle {
+    //广告轮播图
     void banner(String path, IBannerPresenter iBannerPresenter);
+    //推荐里的列表
+    void recommendList(String path, IBannerPresenter iBannerPresenter);
 }
