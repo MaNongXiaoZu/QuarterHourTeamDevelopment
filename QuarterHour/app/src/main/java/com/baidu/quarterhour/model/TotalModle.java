@@ -3,8 +3,10 @@ package com.baidu.quarterhour.model;
 import android.util.Log;
 
 import com.baidu.quarterhour.presenter.IBannerPresenter;
+import com.baidu.quarterhour.presenter.IRecommendListPresenter;
 import com.baidu.quarterhour.view.api.ApiService;
 import com.baidu.quarterhour.view.bean.BannerSuperClass;
+import com.baidu.quarterhour.view.bean.RecommendListSuperClass;
 import com.baidu.quarterhour.view.utils.RetrofitUtils;
 
 import java.util.List;
@@ -38,6 +40,31 @@ public class TotalModle implements ITotalModle {
                     @Override
                     public void onError(Throwable t) {
                         iBannerPresenter.onFailed(t.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    @Override
+    public void recommendList(String path, String uid, String type, String page, String android, String appVersion, final IRecommendListPresenter iRecommendListPresenter) {
+        retrofitUtils = RetrofitUtils.getInData();
+        ApiService apiService = retrofitUtils.getRetrofit(path, ApiService.class);
+        Flowable<RecommendListSuperClass> flowable = apiService.getRecommendListData(uid, type, page, android, appVersion);
+        flowable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DefaultSubscriber<RecommendListSuperClass>() {
+                    @Override
+                    public void onNext(RecommendListSuperClass recommendListSuperClass) {
+                        iRecommendListPresenter.onSuccess(recommendListSuperClass.getData());
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+                        iRecommendListPresenter.onFailed(t.getMessage());
                     }
 
                     @Override
