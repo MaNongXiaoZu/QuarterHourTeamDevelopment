@@ -74,7 +74,7 @@ public class RecommendListSuperClass {
         private UserBean user;
         private String videoUrl;
         private int wid;
-        private Object workDesc;
+        private String workDesc;
         private List<CommentsBean> comments;
 
         public int getCommentNum() {
@@ -181,11 +181,11 @@ public class RecommendListSuperClass {
             this.wid = wid;
         }
 
-        public Object getWorkDesc() {
+        public String getWorkDesc() {
             return workDesc;
         }
 
-        public void setWorkDesc(Object workDesc) {
+        public void setWorkDesc(String workDesc) {
             this.workDesc = workDesc;
         }
 

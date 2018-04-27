@@ -50,7 +50,7 @@ public class TotalActivity extends BaseActivity {
     @Override
     protected void getData() {
         bottomTabBar.init(getSupportFragmentManager())
-                .setImgSize(150,150)
+                .setImgSize(100,100)
                 .setFontSize(0)
                 .addTabItem("推荐", R.mipmap.tuijian2,R.mipmap.tuijian1, RecommendFragment.class)
                 .addTabItem("段子", R.mipmap.duanzi2,R.mipmap.duanzi1, CrossTalkFragment.class)

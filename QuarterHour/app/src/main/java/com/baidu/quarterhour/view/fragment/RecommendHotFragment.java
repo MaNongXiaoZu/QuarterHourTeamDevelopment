@@ -37,6 +37,8 @@ public class RecommendHotFragment extends BaseFragment implements IBannerView, A
     private IBannerPresenter iBannerPresenter;
     private IRecommendListPresenter iRecommendListPresenter;
     private RecommendListAdapter adapter;
+    private List<RecommendListSuperClass.DataBean> listAll;
+    private int count = 1;
 
     @Override
     protected int getLayoutId() {
@@ -61,11 +63,33 @@ public class RecommendHotFragment extends BaseFragment implements IBannerView, A
     @Override
     protected void getData() {
         iBannerPresenter.banner(Api.HOST_NAME);
-        iRecommendListPresenter.recommendList(Api.HOST_NAME,"2","1","1","android","101");
-
+        iRecommendListPresenter.recommendList(Api.HOST_NAME,"2","1",count + "","android","101");
+        //设置xrecycleview的布局
         hot_recycle_view.setLayoutManager(new LinearLayoutManager(getContext()));
+        //添加分割线
         hot_recycle_view.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
 
+        //XRecyclerView的上下拉监听方法
+        hot_recycle_view.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            //下拉刷新
+            public void onRefresh() {
+                count = 1;
+                listAll.clear();
+                iRecommendListPresenter.recommendList(Api.HOST_NAME,"2","1",count + "","android","101");
+                hot_recycle_view.refreshComplete();
+            }
+
+            @Override
+            //上拉加载
+            public void onLoadMore() {
+                count++;
+                iRecommendListPresenter.recommendList(Api.HOST_NAME,"2","1",count + "","android","101");
+                hot_recycle_view.refreshComplete();
+            }
+        });
+
+        //设置适配器
         hot_recycle_view.setAdapter(adapter);
     }
 
@@ -83,7 +107,11 @@ public class RecommendHotFragment extends BaseFragment implements IBannerView, A
     @Override
     public void onSuccessData(List<RecommendListSuperClass.DataBean> data) {
         if (data != null){
-            adapter.setList(data);
+            if (count == 1){
+                listAll = new ArrayList<>();
+            }
+            listAll.addAll(data);
+            adapter.setList(listAll);
         }
     }
 
